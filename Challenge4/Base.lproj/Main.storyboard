@@ -17,17 +17,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Picture" id="qjm-mv-nZf" userLabel="Caption">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PictureCell" textLabel="7re-Mo-9TM" style="IBUITableViewCellStyleDefault" id="qjm-mv-nZf">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qjm-mv-nZf" id="j4n-GN-47T">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="385.5" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZJ-09-fsj" userLabel="Title">
-                                            <rect key="frame" x="20" y="6" width="62" height="32"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7re-Mo-9TM">
+                                            <rect key="frame" x="20" y="0.0" width="357.5" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -55,16 +55,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tTT-qy-cP1">
-                                <rect key="frame" x="0.0" y="64" width="414" height="778"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tdS-bq-yFQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="tTT-qy-cP1" firstAttribute="centerY" secondItem="tdS-bq-yFQ" secondAttribute="centerY" id="DVT-t7-Ilq"/>
-                            <constraint firstItem="tTT-qy-cP1" firstAttribute="leading" secondItem="tdS-bq-yFQ" secondAttribute="leading" id="Hkd-Aw-JTo"/>
-                            <constraint firstItem="tTT-qy-cP1" firstAttribute="centerX" secondItem="tdS-bq-yFQ" secondAttribute="centerX" id="JHd-kN-zt6"/>
-                            <constraint firstItem="tTT-qy-cP1" firstAttribute="top" secondItem="tdS-bq-yFQ" secondAttribute="top" constant="20" id="dr2-b6-bvI"/>
+                            <constraint firstItem="tTT-qy-cP1" firstAttribute="leading" secondItem="tdS-bq-yFQ" secondAttribute="leading" id="KrL-tN-yak"/>
+                            <constraint firstItem="tTT-qy-cP1" firstAttribute="top" secondItem="uAE-fu-Vfm" secondAttribute="topMargin" constant="-44" id="RLf-fG-3vR"/>
+                            <constraint firstItem="tTT-qy-cP1" firstAttribute="centerY" secondItem="uAE-fu-Vfm" secondAttribute="centerY" id="c3h-2n-5ca"/>
+                            <constraint firstItem="tTT-qy-cP1" firstAttribute="centerX" secondItem="uAE-fu-Vfm" secondAttribute="centerX" id="fuj-23-cja"/>
                         </constraints>
                     </view>
                     <connections>
@@ -73,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hRZ-AP-Cod" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1555" y="110"/>
+            <point key="canvasLocation" x="1553.6231884057972" y="109.82142857142857"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pEg-ZL-TAt">
@@ -83,6 +83,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Uwr-fr-8lG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

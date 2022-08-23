@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var pictures = [Picture]()
+    var newCaption = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,48 +21,53 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
         
     }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pictures.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PictureCell", for: indexPath)
         
-        let picture = pictures[indexPath.row]
-        
-        cell.textLabel?.text = picture.name
-        
-        let path = getDocumentsDirectory().appendingPathComponent(picture.name)
-        cell.imageView?.image = UIImage(contentsOfFile: path.path)
+        cell.textLabel?.text = pictures[indexPath.row].caption
         
         return cell
     }
     
     @objc func addNewImage() {
         let picker = UIImagePickerController()
+        
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             picker.sourceType = .camera
         }
             
         picker.allowsEditing = true
         picker.delegate = self
-        present(picker, animated: true)
+        present(picker, animated: true, completion: {
+            let ac = UIAlertController(title: "Enter caption", message: nil, preferredStyle: .alert)
+            ac.addTextField()
+            let submitCaption = UIAlertAction(title: "Enter", style: .default) { [weak self, weak ac] _ in
+                self?.newCaption = ac?.textFields?[0].text ?? "New Picture"
+            }
+            ac.addAction(submitCaption)
+            picker.present(ac, animated: true)
+        })
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.editedImage] as? UIImage else { return }
-        
+            
         let imageName = UUID().uuidString
-        
+            
         let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
-        
+            
         if let jpegData = image.jpegData(compressionQuality: 0.8) {
             try? jpegData.write(to: imagePath)
         }
         
-        let picture = Picture(name: "Name", caption: "Caption")
-        pictures.append(picture)
+        let newPicture = Picture(image: imagePath, caption: newCaption)
+        pictures.append(newPicture)
         tableView.reloadData()
+        newCaption = ""
         
         dismiss(animated: true)
     }
@@ -73,8 +79,9 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-            vc.selectedImage = pictures[indexPath.row].name
+            vc.selectedImage = pictures[indexPath.row].image
             vc.selectedCaption = pictures[indexPath.row].caption
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

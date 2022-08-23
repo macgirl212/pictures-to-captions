@@ -8,11 +8,11 @@
 import Foundation
 
 class Picture: NSObject, Codable {
-    var name: String
+    var image: URL
     var caption: String
     
-    init(name: String, caption: String) {
-        self.name = name
+    init(image: URL, caption: String) {
+        self.image = image
         self.caption = caption
     }
 }
